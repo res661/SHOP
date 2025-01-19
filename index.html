@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Магазин одежды</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=League+Spartan:wght@100..900&family=Manrope:wght@200..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* Основные стили */
+      :root {
+        --dark: #1c1c1c;
+        --accent: #f13939;
+        --light: #e0d2d2;
+        --white: #ffffff;
+        --tr: 0.3s;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: var(--dark);
+        color: var(--white);
+        transition: background-color var(--tr), color var(--tr);
+      }
+
+      body.light-mode {
+        --dark: #f5f5f5;
+        --light: #1c1c1c;
+        --white: #333;
+        background-color: var(--dark);
+        color: var(--white);
+      }
+
+      a {
+        text-decoration: none;
+        transition: var(--tr);
+      }
+
+      .container {
+        max-width: 1200px;
+        padding-left: 15px;
+        padding-right: 15px;
+        margin: 0 auto;
+      }
+
+      .dark {
+        background-color: var(--dark);
+      }
+
+      /* Шапка */
+      .header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-top: 16px;
+        padding-bottom: 16px;
+      }
+
+      .nav {
+        display: flex;
+        align-items: center;
+        gap: 24px;
+        font-size: 18px;
+        font-weight: 500;
+      }
+
+      .nav__link {
+        color: var(--white);
+      }
+
+      .nav__link:hover {
+        color: var(--accent);
+      }
+
+      .btn {
+        padding: 12px 24px;
+        border-radius: 8px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: var(--tr);
+      }
+
+      .btn-light {
+        background-color: var(--light);
+        color: var(--dark);
+      }
+
+      .btn-accent {
+        background-color: var(--accent);
+        color: var(--white);
+      }
+
+      .btn._ml {
+        margin-left: 16px;
+      }
+
+      /* Кнопка переключения темы */
+      .theme-toggle {
+        background-color: var(--accent);
+        color: var(--white);
+        border: none;
+        padding: 10px 20px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: var(--tr);
+      }
+
+      .theme-toggle:hover {
+        opacity: 0.9;
+      }
+
+      /* Основной контент */
+      .main {
+        padding: 40px 0;
+      }
+
+      .section-title {
+        font-size: 32px;
+        font-weight: 700;
+        text-align: center;
+        margin-bottom: 40px;
+        animation: fadeIn 1s ease-in-out;
+      }
+
+      .products {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+      }
+
+      .product-card {
+        background-color: var(--white);
+        border-radius: 8px;
+        overflow: hidden;
+        color: var(--dark);
+        text-align: center;
+        transition: transform var(--tr), box-shadow var(--tr);
+        animation: slideUp 0.5s ease-in-out;
+      }
+
+      .product-card:hover {
+        transform: scale(1.05);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+      }
+
+      .product-card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+      }
+
+      .product-card h3 {
+        font-size: 20px;
+        margin: 16px 0;
+      }
+
+      .product-card p {
+        font-size: 16px;
+        color: #666;
+        margin-bottom: 16px;
+      }
+
+      .product-card .btn {
+        display: inline-block;
+        margin-bottom: 16px;
+      }
+
+      /* Подвал */
+      .footer {
+        background-color: var(--accent);
+        padding: 20px 0;
+        text-align: center;
+        margin-top: 40px;
+        animation: fadeIn 1s ease-in-out;
+      }
+
+      .footer p {
+        margin: 0;
+        font-size: 14px;
+        color: var(--white);
+      }
+
+      /* Анимации */
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes slideUp {
+        from {
+          transform: translateY(20px);
+          opacity: 0;
+        }
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="dark">
+      <!-- Шапка -->
+      <header>
+        <div class="container">
+          <div class="header">
+            <a href="" class="header__logo">
+              <img src="eco1.png" alt="Лого" />
+            </a>
+            <div class="header__nav">
+              <nav class="nav">
+                <a href="#" class="nav__link">Главная</a>
+                <a href="#" class="nav__link">О компании</a>
+                <a href="#" class="btn btn-light _ml">Каталог</a>
+                <a href="#" class="btn btn-accent">TELEGRAM CHANEL</a>
+                <button class="theme-toggle" id="themeToggle">Ночь</button>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Основной контент -->
+      <main class="main">
+        <div class="container">
+          <h2 class="section-title">Наша одежда</h2>
+          <div class="products">
+            <!-- Карточка товара 1 -->
+            <div class="product-card">
+              <img src="https://via.placeholder.com/250x200" alt="Товар 1" />
+              <h3>Футболка "Классика"</h3>
+              <p>Простая и стильная футболка для повседневной носки.</p>
+              <a href="#" class="btn btn-accent">Купить</a>
+            </div>
+
+            <!-- Карточка товара 2 -->
+            <div class="product-card">
+              <img src="https://via.placeholder.com/250x200" alt="Товар 2" />
+              <h3>Джинсы "Слим"</h3>
+              <p>Удобные джинсы с современным дизайном.</p>
+              <a href="#" class="btn btn-accent">Купить</a>
+            </div>
+
+            <!-- Карточка товара 3 -->
+            <div class="product-card">
+              <img src="https://via.placeholder.com/250x200" alt="Товар 3" />
+              <h3>Куртка "Зима"</h3>
+              <p>Теплая куртка для холодного времени года.</p>
+              <a href="#" class="btn btn-accent">Купить</a>
+            </div>
+
+            <!-- Карточка товара 4 -->
+            <div class="product-card">
+              <img src="https://via.placeholder.com/250x200" alt="Товар 4" />
+              <h3>Кроссовки "Спорт"</h3>
+              <p>Легкие и удобные кроссовки для активного образа жизни.</p>
+              <a href="#" class="btn btn-accent">Купить</a>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <!-- Подвал -->
+      <footer class="footer">
+        <div class="container">
+          <p>&copy; 2024 Магазин одежды. Все права защищены.</p>
+        </div>
+      </footer>
+    </div>
+
+    <script>
+      // Переключение темы
+      const themeToggle = document.getElementById("themeToggle");
+      const body = document.body;
+
+      themeToggle.addEventListener("click", () => {
+        body.classList.toggle("light-mode");
+        if (body.classList.contains("light-mode")) {
+          themeToggle.textContent = "День";
+        } else {
+          themeToggle.textContent = "Ночь";
+        }
+      });
+    </script>
+  </body>
+</html>
